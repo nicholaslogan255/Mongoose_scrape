@@ -80,13 +80,11 @@ app.get("/articles", function(req, res) {
 
   console.log("Getting those articles");
 
-
   // Grab every document in the Articles collection
   db.Article.find({})
     .then(function(dbArticle) {
 
       console.log("Articles: "+dbArticle);
-
 
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);

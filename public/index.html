@@ -6,7 +6,7 @@
     <style>
       body { background-color: #F2F6D0 }
       #wrapper {
-        width: 960px;
+        width: 1060px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 5%;
@@ -14,16 +14,17 @@
       #articles {
         display: inline-block;
         overflow: auto;
-        width: 60%;
+        width: 55%;
         height: 700px;
       }
       #notes {
         float: right;
-        width: 30%;
+        width: 40%;
+        border-style: solid
       }
       textarea, input {
         display: block;
-        width: 100%;
+        width: 99%;
         background-color: #FCF5C7;
       }
       input {
@@ -31,7 +32,8 @@
         font-size: 24px;
       }
       textarea {
-        height: 200px;
+        height: 100px;
+        width: 100%;
         font-size: 18px;
       }
     </style>
@@ -40,7 +42,7 @@
     <div id="wrapper">
       <h1>Note Scraper</h1>
       <button id="scrape">Scrape</button>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
+      <h2><i>The coolest articles from the web! Totally not scraped from somewhere else!</i></h2>
       
       <div id="articles"></div>
       <div id="notes"></div>
