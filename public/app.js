@@ -29,29 +29,19 @@ $(document).on("click", "h3", function () {
       console.log(data);
       // The title of the article
       // $("#notes").append("<h2>" + data.title + "</h2>");
-      // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
+    
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
 
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button><hr>");
 
-      
+      console.log("Notes: ", data.note);
 
-
-
-      // If there's a note in the article
-      if (data.note) {
-
+      // load all notes for this article
+      for (let i in data.note) {
         // add the content of the note(s) down below
-        $("#notes").append(`<h2>${data.note.title}</h2><p>${data.note.body}</p><hr>`);
-
-
-        // Place the title of the note in the title input
-        // $("#titleinput").val(data.note.title);
-        // Place the body of the note in the body textarea
-        // $("#bodyinput").val(data.note.body);
+        $("#notes").append(`<p>${data.note[i].body}</p><hr>`);
       }
     });
 });
@@ -66,8 +56,6 @@ $(document).on("click", "#savenote", function () {
     method: "POST",
     url: "/articles/" + thisId,
     data: {
-      // Value taken from title input
-      title: $("#titleinput").val(),
       // Value taken from note textarea
       body: $("#bodyinput").val()
     }
@@ -76,12 +64,15 @@ $(document).on("click", "#savenote", function () {
     .then(function (data) {
       // Log the response
       console.log(data);
+
+      // add the new content to the note list
+      $("#notes").append(`<p>${data.note.body}</p><hr>`);
+
       // Empty the notes section
       // $("#notes").empty();
     });
 
   // Also, remove the values entered in the input and textarea for note entry
-  $("#titleinput").val("");
   $("#bodyinput").val("");
 });
 
@@ -96,9 +87,7 @@ $(document).on("click", "#scrape", function () {
   })
     // With that done, add the note information to the page
     .then(function (data) {
-
-      console.log("Scrape didi a thing");
-
+      console.log("Scraped our website");
     })
 
 
