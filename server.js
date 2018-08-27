@@ -41,7 +41,8 @@ app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
   axios.get("http://www.echojs.com/").then(function(response) {
 
-  
+    console.log("Axios Path found");
+
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
@@ -62,6 +63,7 @@ app.get("/scrape", function(req, res) {
       db.Article.create(result)
         .then(function(dbArticle) {
           // View the added result in the console
+          console.log("################");
           console.log(dbArticle);
         })
         .catch(function(err) {
@@ -85,7 +87,6 @@ app.get("/articles", function(req, res) {
     .then(function(dbArticle) {
 
       console.log("Articles: "+dbArticle);
-
 
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
