@@ -31,7 +31,7 @@ $(document).on("click", "h3", function () {
       // $("#notes").append("<h2>" + data.title + "</h2>");
     
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#notes").append("<p>Add Comment:</p><textarea id='bodyinput' name='body'></textarea>");
 
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button><hr>");
