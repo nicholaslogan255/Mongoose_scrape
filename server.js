@@ -28,8 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
+var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/week18Populater";
+
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/week18Populater");
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
@@ -94,13 +96,13 @@ app.get("/scrape", function (req, res) {
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
 
-  console.log("Getting those articles");
+  console.log("Getting those articles (line 97 server.js)");
 
   // Grab every document in the Articles collection
   db.Article.find({})
     .then(function (dbArticle) {
 
-      console.log("Articles: " + dbArticle);
+      // console.log("Articles: " + dbArticle);
 
       // If we were able to successfully find Articles, send them back to the client
       res.send(dbArticle);
