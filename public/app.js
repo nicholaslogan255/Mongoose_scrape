@@ -88,6 +88,7 @@ $(document).on("click", "#scrape", function () {
     // With that done, add the note information to the page
     .then(function (data) {
       console.log("Scraped our website");
+      console.log(data);
     })
 
 
